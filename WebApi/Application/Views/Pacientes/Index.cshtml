@@ -1,0 +1,25 @@
+﻿@model List<Application.Models.Pacientes>
+
+
+<h2> Crear Pacientes</h2>
+
+
+<label>Nombre Paciente</label>
+<input type="text" id="NombrePaciente" />
+<br />
+
+<br />
+
+<table>
+    <tr>
+        <th>Nombre Paciente</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NombrePaciente)
+            </td>
+        </tr>
+    }
+</table>

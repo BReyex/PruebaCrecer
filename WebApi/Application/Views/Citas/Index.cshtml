@@ -1,0 +1,72 @@
+﻿@model List<Citas>
+
+<h3>Creando Cita</h3>
+<form method="post" action="/Citas/Crear">
+    <label>Paciente</label>
+    <select id="Paciente" name="Paciente" asp-items="@ViewBag.Pacientes">
+        <option>Por favor Seleccione uno</option>
+    </select>
+    <br />
+    <label>Medico</label>
+    <select id="Medico" name="Medico"  asp-items="@ViewBag.Medicos">
+        <option>Por favor Seleccione uno</</option>
+    </select>
+
+    <br />
+    <label>Fecha Hora Cita: </label>
+    <input type="datetime-local" id="FechaHora" name="FechaHora" />
+    <br />
+    <button type="submit">Crear</button>
+</form>
+
+<h3>Listado de Citas</h3>
+
+<table class="table">
+    <tr>
+        <th>
+            Id Cita
+        </th>
+        <th>
+            Id Paciente
+        </th>
+        <th>
+            Id Medico
+        </th>
+        <th>
+            Fecha Hora
+        </th>
+        <th>
+            Diagnostico
+        </th>
+        <th>
+            Opciones
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdCita)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdPaciente)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdMedico)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaHora)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Diagnostico)
+            </td>
+
+            <td>
+                @Html.ActionLink("Diagnosticar", "Diagnosticar", new { IdCita = item.IdCita })
+            </td>
+
+        </tr>
+    }
+
+</table>
